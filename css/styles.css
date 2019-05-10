@@ -1,0 +1,289 @@
+*, *:before, *:after {
+  box-sizing: border-box; 
+}
+/*heimild: https://gridbyexample.com/examples/example13/ */
+
+/* ====== GRID Area ====== */
+
+.topnav {
+grid-area: topnav; 
+}
+header {
+grid-area: header;
+}
+.content {
+grid-area: content; 
+}
+footer {
+grid-area: footer;
+}
+/* dálkar í content */
+.midja {
+grid-area: midja; 
+}
+.vinstri {
+grid-area: vinstri;
+}
+.haegri {
+grid-area: haegri; 
+}
+
+/* ====== GRID Template Areas ===== */
+
+body {
+display: grid;
+grid-gap: 0; /* bil á milli dálka */
+grid-template-areas:
+  "header"
+  "content"
+  "footer"
+  "topnav";
+}
+
+.content {
+display: grid; /* grid erfist til barna (child element only) */
+grid-gap: 0;
+grid-template-areas:
+  "midja"    
+  "vinstri"
+  "haegri"
+}
+
+/* ====== Base litir + padding ====== */
+
+body {
+line-height: 1.5em;
+}
+.topnav {
+background: #1c2d1c; 
+}
+header {
+background: tomato; 
+}
+footer {
+background: lightgreen; 
+}
+.midja {
+background: skyblue; 
+}
+.vinstri {
+background: gold; 
+}
+ 
+.haegri {
+background: pink; 
+}
+header,
+footer,
+.midja,
+.vinstri, 
+.haegri {
+padding: 1em; 
+}
+
+/* ====== leturstílar ====== */
+
+header h1 {
+color: #fff;
+line-height: 1.2;
+font-weight: normal;
+}
+.midja h2 {
+margin: .7em 0 .8em 0;
+}
+.midja h4 {
+text-align: justify;
+margin: .4em 0;
+}
+.midja p {
+text-align: justify;
+}
+
+/* ========================================
+Efnisyfirlit (mobile)
+======================================== */
+.topnav ul{
+background: #1c2d1c; 
+}
+.topnav input {
+display: none;
+}
+
+.topmenu {
+display: block;
+/*position: fixed;*/
+padding: 0;
+margin: 0;
+list-style: none; 
+
+}
+.topmenu li {
+border: 0;
+border-bottom: 1px solid lime; 
+padding: 0;
+margin:0;
+}
+.topmenu li {
+border: 0;
+padding: 0;
+border-bottom: 1px solid lime; 
+}
+.topmenu a {
+display: block;     /* ath! */
+color: white;
+text-decoration: none;
+text-align: center;
+padding: .4em 1em; 
+}
+.topmenu a:hover,
+.topmenu a:active,
+.virkur {
+color: black !important;
+background-color: lime;
+}
+
+/* =======================================
+*  myndvinnsla  *
+======================================== */
+
+/*  myndir <img> alltaf í 100% stærð munið að vinna og 
+  þjappa myndir í photoshop ! */
+
+img, video {
+max-width: 100%;
+height: auto;
+}
+img {
+display: block; /* losna við inline "whitespace" */
+}
+
+figure {
+margin:0;   /* ath! í normalize er sjálsfgefið margin 40px. */
+border: 1px solid orange;
+}
+.myndabox {
+width: 162px; /* ath! klasinn er með fasta breidd*/
+}
+/*  ========================================
+Viðmið - breakpoints 30em = 480px + 
+========================================*/
+
+@media screen and (min-width: 30em) {
+  section {
+    display: block;
+  }
+  .vinstri {
+    float: left;
+    width: 50%;
+  }
+  .myndabox{
+    display: flex;
+    flex-flow: row nowrap;
+  }
+  .haegri { 
+    float: right;
+    width: 50%;
+  }
+} 
+@media screen and (min-width: 37.5em) {
+
+  .content {
+
+
+  /* skipti yfir í 2 dálka */
+  }
+  
+}
+/* ========================================
+Viðmið - breakpoints 48em = 760px +
+======================================== */
+
+@media screen and (min-width: 37.5em) {
+  
+  content{
+    display:grid;
+    margin: 0 auto;
+    width:100%;
+    grid-template-rows:1fr 1fr 1fr;
+    grid-template-areas:
+      "header header header"
+      "content content content" 
+      "haegri midja midja"
+      "vinstri midja midja"
+      "footer footer footer"
+      "topnav topnav topnav";
+  }
+  .midja{
+    width:100%;
+  }
+  footer {
+    width:100%;
+  }
+  .topmenu {
+    width:100%;
+  }
+}
+
+/* ========================================
+Viðmið - breakpoints 48em = 760px +
+======================================== */
+
+@media screen and (min-width: 48em) {  
+  section {
+    display: flex;
+    flex-flow: row;
+  }
+  .vinstri {
+    flex: 1 1 0;
+    order: 1;
+  }
+  .midja{
+    flex: 2 2 1em;
+    order: 2;
+  }
+  .haegri { 
+    flex: 1 1 0;
+    order:3;
+  }
+  .topmenu {
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    position: relative;
+    top:0;
+  }
+  label {
+    display: none;
+  }
+}
+@media screen and (min-width: 60em) { 
+  section{
+    display: flex;
+  }
+  .vinstri,
+  .haegri{
+    flex: 1 1 0;
+  }
+  .sMedia{
+    display: block;
+    position: fixed;
+    top: 4em;
+    left: 0;
+    height: 10em;
+    width: 2.5em;
+  }
+  header h1 {
+    line-height: 1.1;
+    color: #444;
+  }
+}  
+
+@media screen and (min-width: 80em) { 
+  body { 
+    max-width: 77em;
+    margin: 0 auto;
+  }
+    .myndabox {
+
+  }
+}
