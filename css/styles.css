@@ -169,58 +169,53 @@ Viðmið - breakpoints 30em = 480px +
 ========================================*/
 
 @media screen and (min-width: 30em) {
-  section {
-    display: block;
-  }
-  .vinstri {
-    float: left;
-    width: 50%;
+  body {
+    display:grid;
+    grid-gap:0;
+    max-width:100%;
+    grid-template-areas:
+    "header"
+    "content"
+    "footer"
+    "topnav"
+  ;
   }
   .myndabox{
-    display: flex;
-    flex-flow: row nowrap;
-  }
-  .haegri { 
-    float: right;
-    width: 50%;
-  }
-} 
-@media screen and (min-width: 37.5em) {
+    display:inline-block;
+    width:100%;
 
-  .content {
-
-
-  /* skipti yfir í 2 dálka */
   }
-  
 }
 /* ========================================
 Viðmið - breakpoints 48em = 760px +
 ======================================== */
 
 @media screen and (min-width: 37.5em) {
-  
-  content{
+  .content{
     display:grid;
-    margin: 0 auto;
+    grid-gap:0;
+    grid-template-areas: 
+    "haegri midja"
+    "vinstri midja"
+  }
+  body{
+    display:grid;
+    height:auto;
+    grid-gap:0;
     width:100%;
-    grid-template-rows:1fr 1fr 1fr;
     grid-template-areas:
-      "header header header"
-      "content content content" 
-      "haegri midja midja"
-      "vinstri midja midja"
-      "footer footer footer"
-      "topnav topnav topnav";
+    "header header topnav topnav"
+    "content content"
+    "footer footer"
+     ;
+
   }
-  .midja{
+  .myndabox{
     width:100%;
-  }
-  footer {
-    width:100%;
-  }
-  .topmenu {
-    width:100%;
+    display:grid;
+    grid-gap:0px;
+    grid-template-columns:162px 162px;
+
   }
 }
 
@@ -229,53 +224,42 @@ Viðmið - breakpoints 48em = 760px +
 ======================================== */
 
 @media screen and (min-width: 48em) {  
-  section {
-    display: flex;
-    flex-flow: row;
+
+  .content {
+    display:grid;
+    width:100%;
+    grid-template-areas:
+    "vinstri midja midja haegri"
+    
+
   }
-  .vinstri {
-    flex: 1 1 0;
-    order: 1;
+  body {
+    display:grid;
+    width:100%;
+    margin:0;
+    height:auto;
+    grid-gap:0;
+    grid-template-areas:
+    "topnav topnav"
+    "header header"
+    "content content"
+    "footer footer";
+
   }
-  .midja{
-    flex: 2 2 1em;
-    order: 2;
+
   }
-  .haegri { 
-    flex: 1 1 0;
-    order:3;
+  .myndabox{
+    width:100%;
+    display:grid;
+    grid-gap:0px;
+    grid-auto-rows:1fr 1fr 1fr 1fr;
+
   }
-  .topmenu {
-    display: flex;
-    flex-flow: row;
-    justify-content: center;
-    position: relative;
-    top:0;
-  }
-  label {
-    display: none;
-  }
+
 }
 @media screen and (min-width: 60em) { 
-  section{
-    display: flex;
-  }
-  .vinstri,
-  .haegri{
-    flex: 1 1 0;
-  }
-  .sMedia{
-    display: block;
-    position: fixed;
-    top: 4em;
-    left: 0;
-    height: 10em;
-    width: 2.5em;
-  }
-  header h1 {
-    line-height: 1.1;
-    color: #444;
-  }
+  
+
 }  
 
 @media screen and (min-width: 80em) { 
@@ -284,6 +268,9 @@ Viðmið - breakpoints 48em = 760px +
     margin: 0 auto;
   }
     .myndabox {
+      width:100%;
+      height:auto;
+
 
   }
 }
